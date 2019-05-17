@@ -77,18 +77,3 @@ curl https://upload.bugsnag.com/react-native-source-map \
 ## Results
 
 Sourcemaps seem to work well and group correctly for handled and unhandled JS Exceptions, using Haul 1.0.0-rc.15 and React Native 0.59.8, in the examples we've tried.
-
-### iOS
-Without sourcemaps uploaded: https://app.bugsnag.com/bugsnag-test-projects/jamie-android/errors/5cdeac88ec31dd00189cfa5e?filters%5Bevent.since%5D%5B%5D=30d&filters%5Berror.status%5D%5B%5D=open&event_id=5cdeac880039fa2c47a50000
-
-With sourcemaps uploaded: https://app.bugsnag.com/bugsnag-test-projects/jamie-android/errors/5cdead9f468e30001d9b755d?filters%5Bevent.since%5D%5B%5D=30d&filters%5Berror.status%5D%5B%5D=open&event_id=5cdead9f0039f898703d0000
-
-Unhandled JS error with sourcemaps: https://app.bugsnag.com/bugsnag-test-projects/jamie-android/errors/5cdeb657954818001aadd960?filters%5Bevent.since%5D%5B%5D=30d&filters%5Berror.status%5D%5B%5D=open&event_id=5cdeb6f00039f1cb28580000
-
-### Android
-
-Without sourcemaps uploaded: https://app.bugsnag.com/bugsnag-test-projects/jamie-android/errors/5cdeb476601681001a408190?filters%5Bevent.since%5D%5B%5D=30d&filters%5Berror.status%5D%5B%5D=open&event_id=5cdeb4760039f335692d0000
-
-With sourcemaps uploaded: https://app.bugsnag.com/bugsnag-test-projects/jamie-android/errors/5cdead9f468e30001d9b755d?filters%5Bevent.since%5D%5B%5D=30d&filters%5Berror.status%5D%5B%5D=open&event_id=5cdeb607003a04656ba70000
-
-Unhandled JS error with sourcemaps: https://app.bugsnag.com/bugsnag-test-projects/jamie-android/errors/5cdeb657954818001aadd960?filters%5Bevent.since%5D%5B%5D=30d&filters%5Berror.status%5D%5B%5D=open&event_id=5cdeb6570039fe508a960000
