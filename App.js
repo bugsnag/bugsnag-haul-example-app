@@ -7,23 +7,41 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
+import { Client } from 'bugsnag-react-native';
+const bugsnag = new Client('5d1ec8bd39a74caa1267142706a7fb20');
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+function triggerException() {
+  bogusFunction(); // eslint-disable-line no-undef
+}
+
+function triggerHandledException() {
+  bogusHandledFunction(); // eslint-disable-line no-undef
+}
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Button
+              title="Trigger JS Exception"
+              onPress={triggerException} />
+        <Text>
+        Tap this button to send a JS crash to Bugsnag
+        </Text>
+        <Button
+          title="Send Handled JS Exception"
+          onPress={() => {
+            try { // execute crashy code
+              triggerHandledException();
+            } catch (error) {
+              bugsnag.notify(error);
+            }
+          }} />
+        <Text>
+          Tap this button to send a handled error to Bugsnag
+        </Text>
       </View>
     );
   }
@@ -40,10 +58,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
