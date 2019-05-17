@@ -8,8 +8,12 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
-import { Client } from 'bugsnag-react-native';
-const bugsnag = new Client('5d1ec8bd39a74caa1267142706a7fb20');
+
+import { Client, Configuration } from 'bugsnag-react-native';
+
+const config = new Configuration('5d1ec8bd39a74caa1267142706a7fb20');
+config.appVersion = require('./package.json').version;
+const bugsnag = new Client(config);
 
 function triggerException() {
   bogusFunction(); // eslint-disable-line no-undef
